@@ -22,8 +22,26 @@ class MyForm(QDialog):
         self.show()
 
     def button_clicked(self):
+        size = ""
+        delivery_method = ""
+
+        if self.ui.sizeS.isChecked():
+            size = "S"
+        elif self.ui.sizeM.isChecked():
+            size = "M"
+        elif self.ui.sizeL.isChecked():
+            size = "L"
+        elif self.ui.sizeXL.isChecked():
+            size = "XL"
+
         if self.ui.kurierButton.isChecked():
-            self.ui.resultLabel.setText(f'Kurier ')
+            delivery_method = "Kurier"
+        elif self.ui.paczkomatButton.isChecked():
+            delivery_method = "Paczkomat"
+        elif self.ui.odbiorosobistyButton.isChecked():
+            delivery_method = "Odbiór osobisty"
+
+        self.ui.resultLabel.setText(f'Rozmiar: {size}, Metoda dostawy: {delivery_method}')
 
 
 if __name__ == '__main__':
